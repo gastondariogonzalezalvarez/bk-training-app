@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#502915">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="assets/images/icon-512.png">
+    <title>Burger King - Training Quiz</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div id="loginScreen" class="login-overlay">
+        <div class="login-box">
+            <img src="assets/images/logo_bk.png" alt="BK Logo" class="login-logo" onerror="this.style.display='none'">
+            <h2>Bienvenido al BK Training</h2>
+            <p>Introduce tu nombre para comenzar la sesión:</p>
+            <input type="text" id="userNameInput" placeholder="Tu nombre..." autofocus>
+            <button id="startSessionBtn" class="btn btn-primary">Iniciar Sesión</button>
+        </div>
+    </div>
+
+    <div id="app" style="display: none;">
+        <header>
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <img src="assets/images/logo_bk.png" alt="BK Logo" class="header-logo"
+                    onerror="this.style.display='none'">
+                <h1>BK Training Quiz</h1>
+            </div>
+            <div id="sessionUserInfo" style="text-align: right;">
+                <div id="currentUserName" style="font-weight: 800; color: #d62300;">Invitado</div>
+                <div id="statsSummaryQuick" style="font-size: 0.9rem; font-weight: 700; color: #502314; opacity: 0.8;">
+                    Progreso: <span id="progressText">0%</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="layout-wrapper">
+            <aside class="sidebar">
+                <div class="stats-card">
+                    <h3>KPIs por Tema</h3>
+                    <div id="categoryKpis" class="kpi-container">
+                        <!-- KPIs dinámicos -->
+                    </div>
+                </div>
+
+                <div class="theme-filter">
+                    <h3>
+                        <span>Temas</span>
+                        <span id="questionCountInfo" style="font-size: 0.8rem; opacity: 0.6;"></span>
+                    </h3>
+                    <div id="themeOptions" class="theme-options">
+                        <!-- Temas dinámicos -->
+                    </div>
+                    <div class="filter-actions">
+                        <button id="selectAllThemes" class="btn-small">Todos</button>
+                        <button id="deselectAllThemes" class="btn-small">Ninguno</button>
+                    </div>
+                </div>
+
+                <div class="stats-card">
+                    <h3>Mi Puntuación</h3>
+                    <div class="stat-row">
+                        <span>Aciertos:</span>
+                        <span id="correctCount" class="correct-tag">0</span>
+                    </div>
+                    <div class="stat-row">
+                        <span>Errores:</span>
+                        <span id="wrongCount" class="wrong-tag">0</span>
+                    </div>
+                </div>
+            </aside>
+
+            <main class="main-content">
+                <div class="progress-container">
+                    <div id="progressFill" class="progress-fill"></div>
+                </div>
+
+                <div id="quizView" class="quiz-view">
+                    <div class="question-container">
+                        <div id="categoryLabel" class="category-tag">Cargando...</div>
+                        <div id="questionText" class="question-text">Cargando pregunta...</div>
+                        <div id="optionsContainer" class="options-container"></div>
+                    </div>
+
+                    <div id="feedback"
+                        style="margin-top: 20px; font-weight: 700; text-align: center; min-height: 24px;"></div>
+                    <div id="explanation"
+                        style="margin-top: 20px; font-style: italic; font-size: 0.95rem; color: #502314; background: #fffbe6; padding: 20px; border-radius: 16px; display: none; border-left: 5px solid #f5af19; line-height: 1.5;">
+                    </div>
+
+                    <div class="controls">
+                        <button id="nextBtn" class="btn btn-primary" style="display: none;">Siguiente Pregunta</button>
+                    </div>
+                </div>
+
+                <div class="history-section">
+                    <h3>Últimas Respuestas</h3>
+                    <div id="historyList" class="history-list">
+                        <!-- Historial dinámico -->
+                    </div>
+                    <div style="margin-top: 15px; display: flex; justify-content: flex-end;">
+                        <button id="resetHistory" class="btn btn-secondary">Limpiar Historial</button>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js')
+                    .then(reg => console.log('SW registered'))
+                    .catch(err => console.log('SW failed', err));
+            });
+        }
+    </script>
+</body>
+
+</html>
