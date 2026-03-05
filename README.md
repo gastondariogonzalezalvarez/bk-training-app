@@ -12,12 +12,17 @@ Aplicación web progresiva (PWA) de entrenamiento interactivo para el personal d
 - **📶 Soporte Offline**: Una vez cargada, la aplicación funciona sin conexión a internet.
 - **💾 Persistente**: Guarda tus récords y nombres de usuario localmente en el dispositivo.
 
-## 🚀 Instalación en Móvil (Android/Chrome)
+## 🚀 Instalación y Uso
 
+### En Móvil (Android/Chrome)
 1. Abre el enlace de la aplicación en Chrome.
 2. Toca el menú de **tres puntos** (arriba a la derecha).
 3. Selecciona **"Instalar aplicación"** o **"Añadir a la pantalla de inicio"**.
-4. ¡Listo! El icono de BK aparecerá en tu escritorio y funcionará como una app nativa.
+
+### En Ordenador (Windows/Mac)
+1. Abre el enlace en **Chrome** o **Microsoft Edge**.
+2. En la barra de direcciones, haz clic en el icono de **"Instalar"** (una pantalla con una flecha o un "+").
+3. ¡Listo! La app se abrirá en una ventana independiente y tendrás un acceso directo en tu escritorio.
 
 ## 🛠️ Tecnologías
 
